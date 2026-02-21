@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biserica „Sfânta Adormire" – Sătulung, Săcele</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+        :root {
+            --gold: #c9a84c;
+            --gold-light: #e8d48b;
+            --gold-dark: #a08030;
+            --dark: #0f0f1a;
+            --dark-brown: #2d1b0e;
+            --warm-bg: #fdfaf3;
+            --cream: #f7f0e0;
+            --cream-dark: #ede4d0;
+            --text: #3d2b1f;
+            --text-light: #6b5a4e;
+            --accent: #7a1518;
+            --accent-light: #9e2a2d;
+            --border-subtle: #e0d5c0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lora', Georgia, 'Times New Roman', serif;
+            color: var(--text);
+            background: var(--warm-bg);
+            line-height: 1.85;
+            font-size: 16px;
+        }
+
+        /* ═══════════════════════════════════════
+           HERO SECTION
+        ═══════════════════════════════════════ */
+        .hero {
+            background: linear-gradient(170deg, #0a0a14 0%, #1a0f08 40%, #2d1b0e 70%, #1a0f08 100%);
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.06) 0%, transparent 50%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .hero > * { position: relative; z-index: 1; }
+
+        .hero-cross {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-shadow: 0 0 40px rgba(201,168,76,0.4);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(201,168,76,0.3); }
+            to { text-shadow: 0 0 40px rgba(201,168,76,0.6); }
+        }
+
+        .hero-line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel Decorative', 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            letter-spacing: 4px;
+            text-shadow: 2px 3px 6px rgba(0,0,0,0.6);
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--gold-light);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 6px;
+            opacity: 0.9;
+        }
+
+        .hero .location {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 5px;
+            margin-top: 5px;
+        }
+
+        .hero .year-badge {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 40px;
+            border: 1px solid rgba(201,168,76,0.6);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            background: rgba(201,168,76,0.05);
+        }
+
+        /* ═══════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════ */
+        nav {
+            background: linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        nav ul li a {
+            display: block;
+            color: rgba(232,212,139,0.7);
+            text-decoration: none;
+            padding: 15px 22px;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+            background: rgba(201,168,76,0.08);
+        }
+
+        /* ═══════════════════════════════════════
+           MAIN CONTENT
+        ═══════════════════════════════════════ */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        section:last-child { border-bottom: none; }
+
+        /* Section Titles */
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent);
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 15px auto 0;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-brown);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 35px 0 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* ═══════════════════════════════════════
+           QUOTE BLOCKS — FIXED
+        ═══════════════════════════════════════ */
+        .quote {
+            background: linear-gradient(135deg, #f9f3e6 0%, #f0e8d4 100%);
+            border-left: 4px solid var(--gold);
+            padding: 28px 32px 28px 55px;
+            margin: 30px 0;
+            position: relative;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .quote::before {
+            content: '\201E';
+            font-size: 2.8rem;
+            line-height: 1;
+            color: var(--gold-dark);
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            opacity: 0.6;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 1.02rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        .quote-author {
+            text-align: right;
+            font-style: normal;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 14px;
+            font-size: 0.88rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* ═══════════════════════════════════════
+           PISANIA (special inscription box)
+        ═══════════════════════════════════════ */
+        .pisania {
+            background: linear-gradient(160deg, #0f0f1a 0%, #2d1b0e 50%, #1a0f08 100%);
+            color: var(--gold);
+            text-align: center;
+            padding: 40px 35px;
+            border-radius: 6px;
+            margin: 35px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.08rem;
+            line-height: 2.1;
+            border: 1px solid rgba(201,168,76,0.35);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .pisania::before,
+        .pisania::after {
+            content: '☦';
+            position: absolute;
+            color: rgba(201,168,76,0.25);
+            font-size: 1.5rem;
+        }
+        .pisania::before { top: 12px; left: 16px; }
+        .pisania::after { bottom: 12px; right: 16px; }
+
+        /* ═══════════════════════════════════════
+           TIMELINE
+        ═══════════════════════════════════════ */
+        .timeline {
+            position: relative;
+            padding-left: 45px;
+            margin: 35px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--accent), var(--gold));
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 16px 22px;
+            background: linear-gradient(135deg, var(--cream) 0%, #f5ece0 100%);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(4px);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 20px;
+            width: 13px;
+            height: 13px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--warm-bg);
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        .timeline-year {
+            font-family: 'Cinzel', serif;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+        }
+
+        .timeline-text {
+            margin-top: 4px;
+            font-size: 0.93rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* ═══════════════════════════════════════
+           INFO BOXES
+        ═══════════════════════════════════════ */
+        .info-box {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            border: 1px solid #d4c5a9;
+            border-radius: 10px;
+            padding: 28px;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .info-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent);
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+
+        .info-box ul, .info-box ol {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        .info-box li {
+            margin-bottom: 6px;
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════
+           ICONS LIST
+        ═══════════════════════════════════════ */
+        .icons-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .icons-list li {
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--cream) 0%, #f5ece0 100%);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.2s ease;
+        }
+
+        .icons-list li:hover {
+            transform: translateX(3px);
+        }
+
+        .icons-list li strong {
+            color: var(--accent);
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            margin-bottom: 3px;
+        }
+
+        .icons-list li span {
+            font-size: 0.93rem;
+            color: var(--text-light);
+        }
+
+        /* ═══════════════════════════════════════
+           DONORS GRID
+        ═══════════════════════════════════════ */
+        .donors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            margin: 25px 0;
+        }
+
+        .donor-card {
+            background: var(--cream);
+            padding: 18px 20px;
+            border-radius: 8px;
+            border-top: 3px solid var(--gold);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .donor-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .donor-card .name {
+            font-weight: 700;
+            color: var(--dark-brown);
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .donor-card .donation {
+            font-size: 0.88rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════
+           SEPARATOR
+        ═══════════════════════════════════════ */
+        .separator {
+            text-align: center;
+            margin: 45px 0;
+            color: var(--gold);
+            font-size: 1.3rem;
+            letter-spacing: 12px;
+        }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════ */
+        footer {
+            background: linear-gradient(180deg, #0f0f1a 0%, #0a0a12 100%);
+            color: #ccc;
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid rgba(201,168,76,0.2);
+        }
+
+        footer .church-name {
+            font-family: 'Cinzel Decorative', 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        footer p {
+            text-align: center;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        footer .highlight {
+            margin-top: 18px;
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        footer .source {
+            margin-top: 25px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .hero { padding: 70px 20px 55px; }
+            .hero h1 { font-size: 1.8rem; letter-spacing: 2px; }
+            .hero .subtitle { font-size: 1.1rem; }
+            .hero .year-badge { padding: 8px 25px; font-size: 1rem; }
+
+            nav ul li a { padding: 12px 14px; font-size: 0.72rem; letter-spacing: 1px; }
+
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.15rem; }
+
+            .timeline { padding-left: 35px; }
+            .timeline-item::before { left: -28px; width: 10px; height: 10px; }
+
+            .quote { padding: 22px 22px 22px 45px; }
+            .quote::before { font-size: 2.2rem; top: 14px; left: 14px; }
+
+            .donors-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 50px 15px 40px; }
+            .hero h1 { font-size: 1.4rem; letter-spacing: 1px; }
+            .hero .location { font-size: 0.75rem; letter-spacing: 3px; }
+            nav ul { flex-direction: column; align-items: center; }
+            nav ul li a { padding: 10px 20px; }
+            .container { padding: 0 15px; }
+            section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+    <div class="hero-cross">☦</div>
+    <h1>Biserica „Sfânta Adormire"</h1>
+    <div class="hero-line"></div>
+    <div class="subtitle">Adormirea Maicii Domnului</div>
+    <div class="location">SĂTULUNG &bull; SĂCELE &bull; BRAȘOV</div>
+    <div class="year-badge">1812 — 1819</div>
+</header>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav>
+    <ul>
+        <li><a href="#origini">Origini</a></li>
+        <li><a href="#constructia">Construcția</a></li>
+        <li><a href="#cronologie">Cronologie</a></li>
+        <li><a href="#pictura">Pictura</a></li>
+        <li><a href="#iconostas">Iconostas</a></li>
+        <li><a href="#restaurari">Restaurări</a></li>
+        <li><a href="#cronica">Cronica</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <!-- ═══════════ ORIGINI ═══════════ -->
+    <section id="origini">
+        <h2>Originile Bisericii</h2>
+
+        <p>În climatul <strong>„Edictului de toleranță"</strong> din 29 octombrie / 8 noiembrie 1781, prin care se interzicea asuprirea cetățenilor pe motive de credință și s-a permis oricărei confesiuni cuprinzând o sută de familii să-și zidească biserică, puternica și prospera comunitate românească din Sătulung a pășit pe drumul edificării lăcașurilor sfinte.</p>
+
+        <p>La <strong>1794</strong>, comunitatea trece la edificarea primei mari biserici de rit greco-ortodox. Cinci ani mai târziu, placa de marmură a <em>Pisaniei</em> consemna:</p>
+
+        <div class="pisania">
+            „În numele Sfintei Troițe, al Tatălui, al Fiului și al Sfântului Duh<br>
+            s-a ridicat acest sfânt lăcaș unde sălășluiește hramul<br>
+            Sfinților Arhangheli Mihail și Gavriil,<br>
+            în anul 1799 prin protopopul Radu Verzea"
+        </div>
+
+        <p>După numai doi ani, la <strong>1801</strong>, luând realizarea celor „dintâi" drept exemplu și cu îndemnul părintelui <strong>Radu Verzea</strong> — paroh la Sătulung, protopop la Săcele și al 2-lea protopop din Districtul Brașovului — câțiva din gospodarii de frunte, locuind în partea Dânsus a satului, au considerat necesar și posibil ca și în această parte să se mai zidească o biserică.</p>
+
+        <p>Pentru început, un grup restrâns au contribuit cu câte un galben sau valoare echivalentă pentru alcătuirea unui fond din care să se plătească pentru obținerea autorizației și procurarea terenului necesar.</p>
+
+        <div class="info-box">
+            <h4>Bisericile ortodoxe din Săcele după Edictul de toleranță</h4>
+            <ol style="padding-left: 20px;">
+                <li><strong>„Sf. Adormire" – Turcheș</strong> (1781–1783)</li>
+                <li><strong>„Sf. Nicolae" – Baciul</strong> (1782)</li>
+                <li><strong>„Sf. Arhangheli Mihail și Gavriil" – Sătulung</strong> (1794–1799)</li>
+                <li><strong>„Sf. Nicolae" – Baciu</strong> (1804–1811)</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ═══════════ CONSTRUCȚIA ═══════════ -->
+    <section id="constructia">
+        <h2>Construcția Bisericii</h2>
+
+        <p>Terenul ales, în suprafață de aproape un hectar, era așezat pe o ușoară înălțime a uneia din dâmburile prelungiri ale Măgurașului jos, la vreo sută de metri înainte de contopire în câmpia din partea de nord a satului.</p>
+
+        <p>Acest loc a prezentat interes pentru că se afla cam la mijlocul viitoarei parohii, asigura o bună vizibilitate bisericii ce trebuia să se construiască și, foarte important, se mărginiea cu <strong>drumul cel mare, drumul țării de la Brașov la pasul Bratocea</strong>.</p>
+
+        <p>Biserica s-a zidit între anii <strong>1812–1819</strong>. Pe turnul cel mare, deasupra ușii de la intrare, s-a realizat din tencuială în relief înscrisul <strong>„1819"</strong> — anul când s-a terminat de zidit.</p>
+
+        <div class="quote">
+            <div class="quote-text">Din anul 1819, a doua biserică ortodoxă românească din Sătulung era obiectiv de construcție realizat. Interiorul acestei mari biserici era finisat parțial, accesibil însă cerințelor bisericești și primirii credincioșilor.</div>
+        </div>
+
+        <p>La loc deschis, lângă drumul țării (astăzi DN 1A), biserică de sat la mărime de catedrală, cu pictură și amvon de pretenție occidentală.</p>
+
+        <h3>Ctitorii și contribuitorii la zidire</h3>
+        <div class="donors-grid">
+            <div class="donor-card">
+                <div class="name">Vasile Gologan – junior</div>
+                <div class="donation">1810–1815: Organizarea lucrului la zidire și lupta cu protivnicii, în 27 de poziții — Rf. 371</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Viciu Presculet</div>
+                <div class="donation">1813: A ajutat la zidirea bisericii a 2-a prin mâna pr. Radu Verzea — Rf. 313</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Ioan Voiculet</div>
+                <div class="donation">1812: A cedat locul din grădina sa pentru biserică și cimitirul nou — Rf. 180</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Vasile Gologan</div>
+                <div class="donation">1801: Cheltuieli pentru obținerea sloboziei și răscumpărarea locului — Rf. 52</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Radu Găitan</div>
+                <div class="donation">1819: 2 sfeșnice mari sculptate și aurite, odăjdii de mătase, sfeșnice de aramă — Rf. 552</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Ioan Cîrstea – Rusul</div>
+                <div class="donation">1801: Pentru câștigarea sloboziei de biserică, 15 galbeni împărătești — Rf. 172</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CRONOLOGIE ═══════════ -->
+    <section id="cronologie">
+        <h2>Cronologia Edificării</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">1801</div>
+                <div class="timeline-text">Începutul organizării: contribuții pentru obținerea autorizației și procurarea terenului.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1810–1812</div>
+                <div class="timeline-text">Se trece la executarea construcției. Se primesc protocoalele de stare civilă (23 ianuarie 1812).</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1818</div>
+                <div class="timeline-text">Se așează iconostasul lucrat de călugări din Țara Românească, apoi strănile. Încep slujbele religioase.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1819</div>
+                <div class="timeline-text">Se inscripționează „1819" pe turn. Construcția bisericii este finalizată.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1820</div>
+                <div class="timeline-text">Se construiește podișorul (balconul corului), de meșterul sas Johan Senger.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1833–1836</div>
+                <div class="timeline-text">Acoperirea cu tablă a turnurilor, instalarea ceasului orologiu, poleirea iconostasului cu aur.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1839</div>
+                <div class="timeline-text">Pavarea interiorului cu gresie finisată în plăci dreptunghiulare. Cost: 2.701 Rf.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1846</div>
+                <div class="timeline-text">Împrejmuirea cu zid a curții și cimitirului. 93 de binefăcători, cost: 850 Rf.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1868–1873</div>
+                <div class="timeline-text">Pictura monumentală realizată de pictorul academic Mișu Popp. Cost: ~30.000 de galbeni.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1884</div>
+                <div class="timeline-text">Icoana „Învierea" — tablou-ulei pe pânză de Mișu Popp, donată de Ioan B. Băncoată și soția Stoea.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1924</div>
+                <div class="timeline-text">Prima spălare-restaurare a picturii, inițiată de preotul Ieronim Toporci.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1925</div>
+                <div class="timeline-text">Se introduce iluminatul electric în biserică.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1970</div>
+                <div class="timeline-text">A doua restaurare a picturii, de pictorul Ion Băseu din București.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1977</div>
+                <div class="timeline-text">Incendiu la podișor, urmat de reparații și micșorarea balconului. Se descoperă inscripția lui Johan Senger.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PICTURA ═══════════ -->
+    <section id="pictura">
+        <h2>Pictura lui Mișu Popp</h2>
+
+        <p>Existând posibilități de acoperire a cheltuielilor, pe seama situației prospere a economiilor de vite din cuprinsul parohiei, și cu sfatul unor oameni luminați, s-a considerat posibil și de mândrie națională să se realizeze o pictură de un fel nou, frumoasă și înălțătoare. S-a apelat la <strong>pictorul academic Mișu Popp</strong>.</p>
+
+        <p>Lucrările au început în anul <strong>1868</strong> și au continuat vreo cinci ani. Pictorul italian <strong>Astrolodi</strong> a lucrat chenarele, iar Mișu Popp a făcut singur chipurile.</p>
+
+        <div class="info-box">
+            <h4>Complexul pictural</h4>
+            <p>Criticul de artă <strong>Virgil Vătășianu</strong> a publicat în revista <em>Țara Bîrsei</em> (1932) că aceasta este cel mai vast complex de picturi Mișu Popp:</p>
+            <ul>
+                <li><strong>67 de scene</strong> de pictură murală în tempera</li>
+                <li>Distribuite pe pereții și bolțile tindei, navei și altarului</li>
+                <li>Mai multe tablouri în ulei pe iconostas și parapetul podișorului</li>
+                <li>Îmbinare aproape-integrală a reprezentărilor de tip bizantin cu motive occidentale</li>
+            </ul>
+        </div>
+
+        <div class="quote">
+            <div class="quote-text">Să vedeți icoanele de la biserica Sfintei Adormiri din capul satului făcute de Mișu Popp; frumusețe de icoane nu s-a mai pomenit în toată Țara Bîrsei… Rămăsei cu ochii pironiți la tâmplă și la zugrăvelile de pe pereți, căci în adevăr, pictură așa de frumoasă bisericească încă nu mai văzusem.</div>
+            <div class="quote-author">— Andrei Bîrseanu (1858–1922), revista Luminașul, 1911</div>
+        </div>
+
+        <div class="quote">
+            <div class="quote-text">Zugrăveala bisericii noastre făcută de îndemânatecul și atât de prețuitul pictor ardelean Mișu Popp este una din cele mai frumoase din toată țara. A costat vreo treizeci de mii de galbeni și s-a lucrat la ea aproape cinci ani.</div>
+            <div class="quote-author">— George Morcianu (1870–1945), „Chipuri din Săcele", 1938</div>
+        </div>
+    </section>
+
+    <!-- ═══════════ ICONOSTAS ═══════════ -->
+    <section id="iconostas">
+        <h2>Iconostasul și Icoanele</h2>
+
+        <p>Iconostasul (catapeteasma) a fost lucrat de călugări din Țara Românească și așezat la locul lui în <strong>1818</strong>. Inițial montat din lemn alb, a fost finisat (aurit) abia după 15–16 ani, în <strong>1836</strong>.</p>
+
+        <h3>Icoanele de pe iconostas</h3>
+        <ul class="icons-list">
+            <li>
+                <strong>„Adormirea Maicii Domnului"</strong>
+                <span>Făcută cu spesele lui Alexie M. Gologan</span>
+            </li>
+            <li>
+                <strong>„Sfinții Nicolae și Dimitrie"</strong>
+                <span>Făcută cu spesele fraților Nicolae și George N. Gologan (M. Popp, 1873)</span>
+            </li>
+            <li>
+                <strong>„Maica Domnului ca regină cerească cu Pruncul în brațe"</strong>
+                <span>Făcută cu spesele fraților George și Nicolae N. Gologan</span>
+            </li>
+            <li>
+                <strong>„Iisus ca împărat ceresc"</strong>
+                <span>Făcută cu spesele lui Ilan Găitanu</span>
+            </li>
+            <li>
+                <strong>„Arhanghelii Mihail și Gavriil"</strong>
+                <span>Făcută cu spesele lui Vladu Leitan</span>
+            </li>
+            <li>
+                <strong>„Sfânta Treime"</strong>
+                <span>Făcută cu spesele lui Bucur B. Găitan</span>
+            </li>
+        </ul>
+
+        <h3>Donații valoroase de odoare</h3>
+        <div class="donors-grid">
+            <div class="donor-card">
+                <div class="name">Ilan și Radu Găitan</div>
+                <div class="donation">Candela cea mare și o cădelniță — 220 Rf</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Radu Morcianu</div>
+                <div class="donation">Un policandru (1827) — 330 Rf</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Oprea Solomon</div>
+                <div class="donation">Două candele de argint (1837, 1850) — 190 Rf</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Ioan Prosculet</div>
+                <div class="donation">Îmbrăcatul cu argint a chipurilor de la icoana Sf. Adormiri și o candelă de argint — 125 Rf</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Ioan sîn Vlad Leitan</div>
+                <div class="donation">La cruce și alte odoare — 300 Rf</div>
+            </div>
+            <div class="donor-card">
+                <div class="name">Ioan Găitan</div>
+                <div class="donation">O evanghelie de la părintele Ghenadie — 128 Rf</div>
+            </div>
+        </div>
+
+        <h3>Icoana „Învierea"</h3>
+        <p>O altă donație valoroasă: un tablou-ulei pe pânză de <strong>Mișu Popp</strong>, reprezentând Învierea lui Iisus, încadrat într-o frumoasă ramă ovală, poleită, cu raze sclipitoare și candele de jur împrejur. Pe spate stă înscris: <em>„Această icoană s-au făcut cu cheltuiala Dumnealui Ioan B. Băncoată și soția Eli Stoea în anul 1884"</em>.</p>
+    </section>
+
+    <!-- ═══════════ RESTAURĂRI ═══════════ -->
+    <section id="restaurari">
+        <h2>Restaurări și Evenimente</h2>
+
+        <h3>Restaurările picturii</h3>
+        <p>Întregul interior al bisericii, sub acțiunea de zi cu zi a factorilor poluanți — fum, praf și condens — s-a acoperit în decurs de aproape cincizeci de ani de un strat nedorit ce înnegrea pictura.</p>
+
+        <p><strong>1924</strong> — Prima intervenție de spălare-restaurare, inițiată de preotul Ieronim Toporci.</p>
+        <p><strong>1925</strong> — Introducerea iluminatului electric, înlocuind lămpile de la policandre și sfeșnice.</p>
+        <p><strong>1970</strong> — A doua restaurare, efectuată de pictorul autorizat <strong>Ion Băseu</strong> din București, din donații de la enoriași. Pictura și-a recăpătat claritate și frumusețe.</p>
+
+        <h3>Incendiul din 1977 și o descoperire</h3>
+        <p>În vara anului 1977, cineva din cei ce trebăluiau la morminte a observat fum ieșind dinăuntrul bisericii încuiate. S-a dat alarma și s-a reușit stingerea focului de la podișor înainte să producă mari pagube.</p>
+
+        <p>Cu ocazia reparațiilor, dintre materialele dislocate s-a recuperat o <strong>dovadă purtătoare de cronică</strong>: un capăt de scândură pe care era scris cu creion de tâmplar: <em>„Johan Senger Meister der Kirshenst…"</em> — dovada că podișorul s-a construit în anul <strong>1820</strong> de un meșter sas.</p>
+
+        <h3>Evenimentele revoluției din 1848</h3>
+        <p>Din matricolele bisericești reiese că la 30 decembrie 1848, Maria, văduva lui Radu Zăitan, în vârstă de 64 de ani, a fost ucisă de secui din armata revoluției maghiare când au ocupat Săcele.</p>
+    </section>
+
+    <!-- ═══════════ CRONICA ═══════════ -->
+    <section id="cronica">
+        <h2>Cronica Bisericii</h2>
+
+        <p>Protocolul <strong>„PISAIE – 1833"</strong> (din slavonă <em>„pisaié"</em>: însemnare, scriere), volum legat în file cu încrustări aurite, a servit drept cronică a bisericii de-a lungul vremurilor.</p>
+
+        <p>În anul <strong>1920</strong>, preotul <strong>Zenovie Popovici</strong> reintroduce cronica în circuitul informațional. Participant în august 1916 la primirea entuziastă a trupelor românești eliberatoare, apoi la dramatismul retragerii, el face început de cronică: înființarea bibliotecii populare, spălarea și restaurarea picturii, aducerea clopotelor noi în locul celor ridicate în toamna anului 1916, înălțarea troiței eroilor.</p>
+
+        <p>Perioada <strong>1941–1967</strong> este continuată de preotul <strong>Gheorghe Șerbu</strong>.</p>
+
+        <p>Ultimul înscris, din <strong>16 ianuarie 1968</strong>, aparține mitropolitului <strong>Nicolae Vladin</strong> al Ardealului, venit în vizitație canonică la Săcele.</p>
+
+        <div class="separator">☦ &nbsp; ☦ &nbsp; ☦</div>
+
+        <p>În anul <strong>1987</strong>, cu înțelegerea părintelui <strong>Ioan Cornea</strong>, protocolul a fost primit de <strong>Ioan I. Pantilimon</strong> pentru cercetarea înscrisurilor în litere chirilice. Volumul a fost reparat, prevăzut cu titlu și completat, preluând destinația de purtător de cronică.</p>
+
+        <div class="info-box">
+            <h4>Matricolele bisericești (din 1812)</h4>
+            <p>Registrele de stare civilă, tipărite la Sibiu în tipografia lui Ioan Bart (1811), au cuprins evidența botezaților, căsătoriților și decedaților. De la 1812 până la sfârșitul anului 1935, în cimitirul din jurul bisericii s-au petrecut <strong>7.310 de înmormântări</strong>.</p>
+            <p style="margin-top: 10px;">În anul 1812, la biserica a 2-a au slujit trei preoți: <strong>Radu Verzea</strong>, <strong>Alexie Verzea</strong> și <strong>Ioan Mastunovici</strong>.</p>
+        </div>
+
+        <div class="pisania" style="margin-top: 40px;">
+            „Nihil est annis velocius"<br>
+            <span style="font-size: 0.9rem; opacity: 0.7;">— Ovidiu —</span><br><br>
+            <span style="font-size: 0.85rem; color: rgba(232,212,139,0.6);">Nimic nu trece mai iute ca anii.</span>
+        </div>
+
+        <p style="text-align: center; margin-top: 35px; font-style: italic; color: #999; line-height: 1.8;">
+            Pentru cronică și amintirea tinerilor preoți Ioan Cornea și Mircea Lela,<br>
+            de Ioan al Pănțelimon — Săcele–Sătulung, anul 1989.
+        </p>
+    </section>
+
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+    <div class="church-name">☦ Biserica „Sfânta Adormire" ☦</div>
+    <p>Adormirea Maicii Domnului</p>
+    <p>Sătulung, Săcele, jud. Brașov</p>
+    <p class="highlight">Zidită între 1812–1819 &bull; Pictată de Mișu Popp (1868–1873)</p>
+    <div class="source">
+        Sursă documentară: „Protocolul ctitorii" și cronica bisericii,<br>
+        întocmite de Ioan I. Pantilimon, Săcele–Sătulung, 1989
+    </div>
+</footer>
+
+</body>
+</html>
