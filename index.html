@@ -498,6 +498,88 @@
             letter-spacing: 12px;
         }
         /* ═══════════════════════════════════════
+           PREOȚII SLUJITORI
+        ═══════════════════════════════════════ */
+        .preoti-section {
+            background: linear-gradient(160deg, #0a0a14 0%, #1a0f08 40%, #2d1b0e 70%, #1a0f08 100%);
+            padding: 70px 20px;
+            text-align: center;
+            position: relative;
+            border-top: 1px solid rgba(201,168,76,0.2);
+            border-bottom: 1px solid rgba(201,168,76,0.2);
+        }
+        .preoti-section::before,
+        .preoti-section::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .preoti-section::before { top: 0; }
+        .preoti-section::after { bottom: 0; }
+        .preoti-section .section-cross {
+            font-size: 2.5rem;
+            color: #f0d060;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(240,208,96,0.5);
+        }
+        .preoti-section h2 {
+            font-family: 'Cinzel Decorative', 'Cinzel', serif;
+            color: #f0d060;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9), 0 0 30px rgba(240,208,96,0.3);
+        }
+        .preoti-section h2::after {
+            background: linear-gradient(90deg, transparent, #f0d060, transparent);
+            margin: 18px auto 0;
+        }
+        .preoti-subtitle {
+            font-family: 'Playfair Display', serif;
+            color: #f5e0a0;
+            font-size: 1rem;
+            font-style: italic;
+            margin-bottom: 45px;
+            opacity: 0.7;
+        }
+        .preoti-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .preot-card {
+            padding: 16px 20px;
+            border-left: 3px solid rgba(201,168,76,0.4);
+            background: rgba(255,255,255,0.03);
+            border-radius: 0 6px 6px 0;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .preot-card:hover {
+            background: rgba(201,168,76,0.08);
+            border-left-color: #f0d060;
+            transform: translateX(4px);
+        }
+        .preot-name {
+            font-family: 'Cinzel', serif;
+            color: #f0d060;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .preot-years {
+            font-family: 'Lora', serif;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            margin-top: 3px;
+            letter-spacing: 2px;
+        }
+        /* ═══════════════════════════════════════
            FOOTER
         ═══════════════════════════════════════ */
         footer {
@@ -580,7 +662,7 @@
         <div class="location">SĂTULUNG &bull; SĂCELE &bull; BRAȘOV</div>
         <div class="year-badge">1812 — 1819</div>
     </div>
-    <button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="Activează sunetul">🔇</button>
+    <button class="sound-btn" id="soundBtn" onclick="toggleSound()" title="Oprește muzica">🔊</button>
     <a href="#origini" class="scroll-indicator">
         <span>Descoperă</span>
         <div class="scroll-arrow"></div>
@@ -596,6 +678,7 @@
         <li><a href="#iconostas">Iconostas</a></li>
         <li><a href="#restaurari">Restaurări</a></li>
         <li><a href="#cronica">Cronica</a></li>
+        <li><a href="#preoti">Preoții</a></li>
     </ul>
 </nav>
 <div class="container">
@@ -865,6 +948,70 @@
         </p>
     </section>
 </div>
+<!-- ═══════════ PREOȚII SLUJITORI ═══════════ -->
+<section class="preoti-section" id="preoti">
+    <div class="section-cross">☦</div>
+    <h2>Preoții Slujitori</h2>
+    <div class="preoti-subtitle">la această sfântă biserică</div>
+    <div class="preoti-grid">
+        <div class="preot-card">
+            <div class="preot-name">Ioan Verzea</div>
+            <div class="preot-years">1812 — 1830</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Ioan Martinovici</div>
+            <div class="preot-years">1813 — 1831</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Alexe Verzea</div>
+            <div class="preot-years">1825 — 1831</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Ieremia Verzea</div>
+            <div class="preot-years">1825 — 1831</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Neagoe Popea</div>
+            <div class="preot-years">1831 — 1874</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Radu Popea</div>
+            <div class="preot-years">1850 — 1897</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Ioan Martinovici</div>
+            <div class="preot-years">1838 — 1856</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Victor Popea</div>
+            <div class="preot-years">1875 — 1921</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Zenovie Popovici</div>
+            <div class="preot-years">1904 — 1941</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Gheorghe Șerbu</div>
+            <div class="preot-years">1937 — 1980</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Gheorghe Ianescu</div>
+            <div class="preot-years">1945 — 1962</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Ioan Bădițoiu</div>
+            <div class="preot-years">1953 — 1986</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Ioan Cornea</div>
+            <div class="preot-years">1981 — 2018</div>
+        </div>
+        <div class="preot-card">
+            <div class="preot-name">Mircea Leb</div>
+            <div class="preot-years">1986 — 2018</div>
+        </div>
+    </div>
+</section>
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer>
     <div class="church-name">☦ Biserica „Sfânta Adormire" ☦</div>
@@ -912,27 +1059,64 @@
     setTimeout(function() { clearInterval(checkInterval); }, 10000);
 })();
 
-// Control muzică de fundal
+// Control muzică de fundal — pornește la prima interacțiune
 var musicPlaying = false;
+var musicStarted = false;
+var music = document.getElementById('bgMusic');
+var btn = document.getElementById('soundBtn');
+
+function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    music.play().then(function() {
+        musicPlaying = true;
+        btn.textContent = '🔊';
+        btn.title = 'Oprește muzica';
+        removeStartListeners();
+    }).catch(function() {
+        musicStarted = false;
+    });
+}
+
+// Încearcă autoplay direct
+music.play().then(function() {
+    musicPlaying = true;
+    musicStarted = true;
+    btn.textContent = '🔊';
+}).catch(function() {
+    // Browserul a blocat — ascultă ORICE interacțiune
+    addStartListeners();
+});
+
+function addStartListeners() {
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
+        document.addEventListener(evt, startMusic, { once: true });
+    });
+}
+
+function removeStartListeners() {
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
+        document.removeEventListener(evt, startMusic);
+    });
+}
 
 function toggleSound() {
-    var music = document.getElementById('bgMusic');
-    var btn = document.getElementById('soundBtn');
-
-    if (!musicPlaying) {
-        music.play().then(function() {
-            musicPlaying = true;
-            btn.textContent = '🔊';
-            btn.title = 'Oprește muzica';
-        }).catch(function() {
-            // Browserul a blocat — încearcă din nou la click
-            musicPlaying = false;
-        });
-    } else {
+    if (!musicStarted) {
+        // Prima dată — pornește muzica
+        startMusic();
+        return;
+    }
+    if (musicPlaying) {
         music.pause();
         musicPlaying = false;
         btn.textContent = '🔇';
         btn.title = 'Pornește muzica';
+    } else {
+        music.play().then(function() {
+            musicPlaying = true;
+            btn.textContent = '🔊';
+            btn.title = 'Oprește muzica';
+        });
     }
 }
 </script>
