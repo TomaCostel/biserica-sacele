@@ -568,6 +568,9 @@
     <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
         <source src="prezentare-biserica.mp4" type="video/mp4">
     </video>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="muzica-biserica.mp3" type="audio/mpeg">
+    </audio>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="hero-cross">☦</div>
@@ -874,58 +877,62 @@
     </div>
 </footer>
 <script>
-// Forțează autoplay pe mobil
+// Forțează autoplay video pe mobil
 (function() {
-    const video = document.getElementById('heroVideo');
+    var video = document.getElementById('heroVideo');
 
-    // Încearcă să pornească videoclipul imediat
-    function tryPlay() {
+    function tryPlayVideo() {
         if (video.paused) {
             video.muted = true;
-            var playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(function() {
-                    // Browserul a blocat autoplay — pornește la primul touch
-                    document.addEventListener('touchstart', playOnTouch, { once: true });
-                    document.addEventListener('click', playOnTouch, { once: true });
+            var p = video.play();
+            if (p !== undefined) {
+                p.catch(function() {
+                    document.addEventListener('touchstart', playVideoOnTouch, { once: true });
+                    document.addEventListener('click', playVideoOnTouch, { once: true });
                 });
             }
         }
     }
 
-    function playOnTouch() {
+    function playVideoOnTouch() {
         video.muted = true;
         video.play();
     }
 
-    // Încearcă la diferite momente de încărcare
-    tryPlay();
-    document.addEventListener('DOMContentLoaded', tryPlay);
-    window.addEventListener('load', tryPlay);
+    tryPlayVideo();
+    document.addEventListener('DOMContentLoaded', tryPlayVideo);
+    window.addEventListener('load', tryPlayVideo);
 
-    // Fallback: verifică la fiecare secundă dacă videoul e gata
     var checkInterval = setInterval(function() {
         if (video.readyState >= 2) {
-            tryPlay();
+            tryPlayVideo();
             clearInterval(checkInterval);
         }
     }, 500);
-
-    // Oprește verificarea după 10 secunde
     setTimeout(function() { clearInterval(checkInterval); }, 10000);
 })();
 
+// Control muzică de fundal
+var musicPlaying = false;
+
 function toggleSound() {
-    const video = document.getElementById('heroVideo');
-    const btn = document.getElementById('soundBtn');
-    if (video.muted) {
-        video.muted = false;
-        btn.textContent = '🔊';
-        btn.title = 'Dezactivează sunetul';
+    var music = document.getElementById('bgMusic');
+    var btn = document.getElementById('soundBtn');
+
+    if (!musicPlaying) {
+        music.play().then(function() {
+            musicPlaying = true;
+            btn.textContent = '🔊';
+            btn.title = 'Oprește muzica';
+        }).catch(function() {
+            // Browserul a blocat — încearcă din nou la click
+            musicPlaying = false;
+        });
     } else {
-        video.muted = true;
+        music.pause();
+        musicPlaying = false;
         btn.textContent = '🔇';
-        btn.title = 'Activează sunetul';
+        btn.title = 'Pornește muzica';
     }
 }
 </script>
