@@ -565,7 +565,7 @@
 <body>
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
         <source src="prezentare-biserica.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
@@ -874,6 +874,47 @@
     </div>
 </footer>
 <script>
+// Forțează autoplay pe mobil
+(function() {
+    const video = document.getElementById('heroVideo');
+
+    // Încearcă să pornească videoclipul imediat
+    function tryPlay() {
+        if (video.paused) {
+            video.muted = true;
+            var playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    // Browserul a blocat autoplay — pornește la primul touch
+                    document.addEventListener('touchstart', playOnTouch, { once: true });
+                    document.addEventListener('click', playOnTouch, { once: true });
+                });
+            }
+        }
+    }
+
+    function playOnTouch() {
+        video.muted = true;
+        video.play();
+    }
+
+    // Încearcă la diferite momente de încărcare
+    tryPlay();
+    document.addEventListener('DOMContentLoaded', tryPlay);
+    window.addEventListener('load', tryPlay);
+
+    // Fallback: verifică la fiecare secundă dacă videoul e gata
+    var checkInterval = setInterval(function() {
+        if (video.readyState >= 2) {
+            tryPlay();
+            clearInterval(checkInterval);
+        }
+    }, 500);
+
+    // Oprește verificarea după 10 secunde
+    setTimeout(function() { clearInterval(checkInterval); }, 10000);
+})();
+
 function toggleSound() {
     const video = document.getElementById('heroVideo');
     const btn = document.getElementById('soundBtn');
