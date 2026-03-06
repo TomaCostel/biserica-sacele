@@ -647,7 +647,7 @@
 <body>
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero">
-    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="poster-biserica.jpg">
         <source src="prezentare-biserica.mp4" type="video/mp4">
     </video>
     <audio id="bgMusic" loop preload="auto">
@@ -1024,39 +1024,60 @@
     </div>
 </footer>
 <script>
-// Forțează autoplay video pe mobil
+// Video autoplay cu streaming progresiv
 (function() {
     var video = document.getElementById('heroVideo');
+    var hasStarted = false;
 
     function tryPlayVideo() {
-        if (video.paused) {
-            video.muted = true;
-            var p = video.play();
-            if (p !== undefined) {
-                p.catch(function() {
-                    document.addEventListener('touchstart', playVideoOnTouch, { once: true });
-                    document.addEventListener('click', playVideoOnTouch, { once: true });
-                });
-            }
+        if (!video.paused) { hasStarted = true; return; }
+        video.muted = true;
+        var p = video.play();
+        if (p !== undefined) {
+            p.then(function() { hasStarted = true; }).catch(function() {
+                // Fallback: pornește la prima interacțiune
+                document.addEventListener('touchstart', playOnInteraction, { once: true });
+                document.addEventListener('click', playOnInteraction, { once: true });
+            });
         }
     }
 
-    function playVideoOnTouch() {
+    function playOnInteraction() {
         video.muted = true;
-        video.play();
+        video.play().then(function() { hasStarted = true; });
     }
 
+    // Pornește imediat ce are suficiente date (nu așteaptă tot fișierul)
+    video.addEventListener('canplay', function() { tryPlayVideo(); });
+    video.addEventListener('loadeddata', function() { tryPlayVideo(); });
+
+    // Încearcă și direct
     tryPlayVideo();
     document.addEventListener('DOMContentLoaded', tryPlayVideo);
-    window.addEventListener('load', tryPlayVideo);
 
+    // Verifică periodic dacă videoul e gata
     var checkInterval = setInterval(function() {
         if (video.readyState >= 2) {
             tryPlayVideo();
+        }
+        if (hasStarted && video.readyState >= 3) {
             clearInterval(checkInterval);
         }
-    }, 500);
-    setTimeout(function() { clearInterval(checkInterval); }, 10000);
+    }, 300);
+    setTimeout(function() { clearInterval(checkInterval); }, 30000);
+
+    // Tratează cazul când videoul se oprește din cauza bufferului
+    video.addEventListener('waiting', function() {
+        // Videoul se bufferează — nu face nimic, va continua automat
+    });
+    video.addEventListener('stalled', function() {
+        // Încearcă să repornească
+        setTimeout(function() {
+            if (video.paused && video.readyState >= 2) {
+                video.play().catch(function(){});
+            }
+        }, 1000);
+    });
 })();
 
 // Control muzică de fundal — pornește la prima interacțiune
